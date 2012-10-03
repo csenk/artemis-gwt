@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = "com.artemis"
+version = "a609b2076aacc0ef5ecf0b390205d01bb88ceae2"
+
+sourceSets {
+	artemis
+}
+
+jar {
+	dependsOn compileArtemisJava
+
+	from sourceSets.artemis.output.classesDir
+	from sourceSets.artemis.allJava
+}
+
+/**
+ * Unpacks the artemis sources into the artemis source folder.
+ */ 
+task unpackArtemis << {
+	copy {
+		from zipTree("lib/artemis-" + version + "-src.jar").matching {
+			exclude "*/Utils.java"
+		}
+		into "src/artemis/java"
+	}
+}
