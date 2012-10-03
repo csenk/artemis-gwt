@@ -184,8 +184,9 @@ public final class Entity {
 	 *            the expected return component type.
 	 * @return component that matches, or null if none is found.
 	 */
+	@SuppressWarnings("unchecked")
 	public <T extends Component> T getComponent(Class<T> type) {
-		return type.cast(getComponent(ComponentType.getTypeFor(type)));
+		return (T)getComponent(ComponentType.getTypeFor(type));
 	}
 
 	/**
