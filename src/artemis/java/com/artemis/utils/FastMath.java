@@ -43,14 +43,4 @@ public class FastMath {
 		return (Math.abs(x) < 1) ? x / (1 + _atan_a * x * x) : Math.signum(x) * HALF_PI - x / (x * x + _atan_a);
 	}
 
-	public final static double inverseSqrt(double x) {
-		final double xhalves = 0.5d * x;
-		x = Double.longBitsToDouble(0x5FE6EB50C7B537AAl - (Double.doubleToRawLongBits(x) >> 1));
-		return x * (1.5d - xhalves * x * x); // more iterations possible
-	}
-
-	public final static double sqrt(final double x) {
-		return x * inverseSqrt(x);
-	}
-
 }

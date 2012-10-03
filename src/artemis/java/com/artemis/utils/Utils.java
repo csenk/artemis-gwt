@@ -70,7 +70,7 @@ public class Utils {
 		float a = x1 - x2;
 		float b = y1 - y2;
 
-		return (float) FastMath.sqrt(a * a + b * b);
+		return (float) Math.sqrt(a * a + b * b);
 	}
 
 	public static float angleInDegrees(float ownerRotation, float x1, float y1, float x2, float y2) {
