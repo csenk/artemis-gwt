@@ -115,8 +115,9 @@ public class World {
 	 *            class type of the manager
 	 * @return the manager
 	 */
+	@SuppressWarnings("unchecked")
 	public <T extends Manager> T getManager(Class<T> managerType) {
-		return managerType.cast(managers.get(managerType));
+		return (T)managers.get(managerType);
 	}
 	
 	/**
@@ -285,8 +286,9 @@ public class World {
 	 * @param type type of system.
 	 * @return instance of the system in this world.
 	 */
+	@SuppressWarnings("unchecked")
 	public <T extends EntitySystem> T getSystem(Class<T> type) {
-		return type.cast(systems.get(type));
+		return (T)systems.get(type);
 	}
 
 	
