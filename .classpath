@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry excluding="**" kind="src" path="src/emulated/java"/>
+	<classpathentry kind="src" path="src/artemis/java"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry kind="src" path="src/artemis/java"/>
 	<classpathentry exported="true" kind="con" path="com.springsource.sts.gradle.classpathcontainer"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
