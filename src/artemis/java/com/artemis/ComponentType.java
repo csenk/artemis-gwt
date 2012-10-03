@@ -19,7 +19,7 @@ public class ComponentType {
 	
 	@Override
 	public String toString() {
-		return "ComponentType["+type.getSimpleName()+"] ("+index+")";
+		return "ComponentType["+type.getName()+"] ("+index+")";
 	}
 
 	private static HashMap<Class<? extends Component>, ComponentType> componentTypes = new HashMap<Class<? extends Component>, ComponentType>();
