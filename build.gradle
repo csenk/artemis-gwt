@@ -5,24 +5,34 @@ group = "com.artemis"
 version = "a609b2076aacc0ef5ecf0b390205d01bb88ceae2"
 
 sourceSets {
+	emulated
 	artemis
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile "com.google.gwt:gwt-user:2.4.0"
 }
 
 jar {
 	dependsOn compileArtemisJava
 
+	from sourceSets.emulated.allJava
+
 	from sourceSets.artemis.output.classesDir
-	from sourceSets.artemis.allJava
+	from sourceSets.artemis.allJava	
 }
 
 /**
  * Unpacks the artemis sources into the artemis source folder.
+ * NOTE: Do call this only if you are able to replay the steps which where necessary to make this library gwt compatible.
  */ 
 task unpackArtemis << {
 	copy {
-		from zipTree("lib/artemis-" + version + "-src.jar").matching {
-			exclude "*/Utils.java"
-		}
+		from zipTree("lib/artemis-" + version + "-src.jar")
 		into "src/artemis/java"
 	}
 }
