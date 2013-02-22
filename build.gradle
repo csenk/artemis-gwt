@@ -6,7 +6,7 @@ version = "a609b2076aacc0ef5ecf0b390205d01bb88ceae2"
 
 sourceSets {
 	emulated
-	artemis
+	artemisemulated
 }
 
 repositories {
@@ -18,12 +18,11 @@ dependencies {
 }
 
 jar {
-	dependsOn compileArtemisJava
-
+	from sourceSets.main.allJava
 	from sourceSets.emulated.allJava
-
-	from sourceSets.artemis.output.classesDir
-	from sourceSets.artemis.allJava	
+	from sourceSets.artemisemulated.allJava
+	
+	from zipTree("lib/artemis-" + version + ".jar")
 }
 
 /**
@@ -33,6 +32,6 @@ jar {
 task unpackArtemis << {
 	copy {
 		from zipTree("lib/artemis-" + version + "-src.jar")
-		into "src/artemis/java"
+		into "src/artemisemulated/java/com/artemis/"
 	}
 }
