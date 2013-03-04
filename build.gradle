@@ -2,7 +2,10 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = "com.artemis"
-version = "a609b2076aacc0ef5ecf0b390205d01bb88ceae2"
+version = "1.0.0"
+
+ext.artemis_version = "a609b2076aacc0ef5ecf0b390205d01bb88ceae2"
+ext.gwt_version = "2.5.0"
 
 sourceSets {
 	emulated
@@ -14,15 +17,15 @@ repositories {
 }
 
 dependencies {
-	compile "com.google.gwt:gwt-user:2.4.0"
+	compile group: "com.google.gwt", name: "gwt-user", version: gwt_version
 }
 
 jar {
+	classifier = "gwt" + gwt_version
+
 	from sourceSets.main.allJava
 	from sourceSets.emulated.allJava
 	from sourceSets.artemisemulated.allJava
-	
-	from zipTree("lib/artemis-" + version + ".jar")
 }
 
 /**
@@ -31,7 +34,7 @@ jar {
  */ 
 task unpackArtemis << {
 	copy {
-		from zipTree("lib/artemis-" + version + "-src.jar")
+		from zipTree("lib/artemis-" + artemis_version + "-src.jar")
 		into "src/artemisemulated/java/com/artemis/"
 	}
 }
