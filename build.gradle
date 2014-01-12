@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-ext.artemis_version = "a609b2076aacc0ef5ecf0b390205d01bb88ceae2"
+ext.artemis_version = "1.0.1"
 ext.gwt_version = "2.5.0"
 
 group = "com.artemis"
@@ -39,7 +39,7 @@ build.dependsOn distZip
  */ 
 task unpackArtemis << {
 	copy {
-		from zipTree("lib/artemis-" + artemis_version + "-src.jar")
+		from zipTree("lib/artemis-" + artemis_version + "-sources.jar")
 		into "src/artemisemulated/java/com/artemis/"
 	}
 }
